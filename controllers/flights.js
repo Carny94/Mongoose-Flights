@@ -1,4 +1,4 @@
-const { models } = require('mongoose');
+const models  = require('mongoose');
 const flightModl = require('../models/flight');
 const flightCreate = require('../models/flight');
 
@@ -28,16 +28,17 @@ function newFlight (req, res) {
 };
 
 async function create (req, res){
-    req.body.Airline = req.body.Airline.trim();
-    if(req.body.Airline) req.body.Airline = req.body.Airline.split(/\s*,\s*/);
-    try {
-        await flightModl.create (req.body);
-        res.redirect('/flights');
-    } catch (err) {
-        console.log(err);
-        res.render('flights/new', { errorMsg: err.message });
-    }
-}       
 
-
- 
+    for (let key in req.body) {
+        if (req.body[key] === '') {
+          delete req.body[key];
+        }
+      }
+try {
+    const flight = await flightCreate.create(re.body);
+            res.redirect(`/flights/${flight._id}`);
+} catch {err} {
+    console.log(err);
+    res.render('flights/new', {errorMsg: err.message});
+ }
+}

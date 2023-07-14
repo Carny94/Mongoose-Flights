@@ -1,21 +1,19 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const destinationSchema = new Schema({
+    airport: {
+        type: String,
+        enum: ['AMS', 'YYZ', 'SEA', 'IAH', 'MIA']
+    },
 
-// const reviewSchema = new Schema ({
-// content: {
-//     type: String,
-//     required: true
-// },
-// rating: {
-//     type: Number,
-//     min: 1,
-//     max:5,
-//     default: 5
-// },
-// }, {
-// timestamps: true    
-// });
+    arrival: {
+        date: {
+        type: Date    
+        }
+    },
+    
+});
 
 const flightSchema = new Schema ({
     airline: {
@@ -37,15 +35,21 @@ const flightSchema = new Schema ({
         date: {
         type: Date
     }
-},
-timestamps: true ,
-reviews: [reviewSchema]
+    },
+    flightDeparture: {
+    type: Date,
+    min: new Date('2018-06-07T00:00'),
+    max: new Date('2018-06-14T00:00')
+    },
 
+
+destination: [destinationSchema]
+
+},{
+
+timestamps: true 
 
 });
-
-
-
 
 
 module.exports = mongoose.model('flight', flightSchema );
