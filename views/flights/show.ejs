@@ -1,15 +1,15 @@
-<!-- <%- include('../partials/header')%> -->
+<%- include('../partials/header')%>
 <section id="show-page">
     <div>Airline Name: </div>
-    <div><%= flight.Airline %></div>
+    <div><%= flight.airline %></div>
     <div>Airport: </div>
-    <div><%= flight.Airport %></div>
+    <div><%= flight.airport %></div>
     <div>Flight Number: </div>
-    <div><%= flight.flight number %></div>
-</section>
+    <div><%= flight.flightNo %></div>
+
 
 <!-- Iterate over each flight and display flight details -->
-<% flights.forEach(flight => { %>
+<% flights.forEach((flight) => { %>
     <div>
       <p>Flight Number: <%= flight.flightNo %></p>
       <p>Airline: <%= flight.airline %></p>
@@ -17,9 +17,13 @@
       <!-- Add the "detail" link with a URL parameter for flight ID -->
       <a href="/flights/<%= flight._id %>">View Details</a>
     </div>
-  <% }) %><!-- Display the flight details -->
-  <h1>Flight Details</h1>
+  <% }) %>
+</section>
+  <!-- Display the flight details -->
+  <h1>Flight Details</h1> 
   <p>Flight Number: <%= flight.flightNo %></p>
-  <p>Airline: <%= flight.airline %></p>
+  <p>Airline: <%= flight.airline %></p>#
   <p>Airport: <%= flight.airport %></p>
+
+  <%- include('../partials/footer')%>
   

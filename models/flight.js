@@ -32,16 +32,10 @@ const flightSchema = new Schema ({
 
     },
     departs: {
-        date: {
+       
         type: Date
-    }
-    },
-    flightDeparture: {
-    type: Date,
-    min: new Date('2018-06-07T00:00'),
-    max: new Date('2018-06-14T00:00')
-    },
 
+    },
 
 destination: [destinationSchema]
 

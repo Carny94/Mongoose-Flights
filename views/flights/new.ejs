@@ -1,29 +1,13 @@
-<%- include('../partials/header') %>
+<%- include('../partials/header')%>
 <!--Also my header is not displaying-->
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Add a new flight</title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-  </head>
-  <body>
+
     <form id="new-form" action="/flights" method="post">
-      <label>Airline:
-        <input type="text" name="airline">
-      </label><br>
-      <label>Airport:
-        <input type="text" name="airport">
-      </label><br>
       <label>Flight Number:
         <input type="number" name="flightNo">
       </label><br>
       <label>Depart:
-        <input type="date" name="departs">
+        <input type="datetime-local" name="departs">
       </label><br>
-      <label for="flightDeparture">Flight Departure</label>
-      <input type="datetime-local" id="departure-time"
-        name="meeting-time" value="2018-06-12T19:30"
-        min="2018-06-07T00:00" max="2018-06-14T00:00">
 <!-- should there be a (/form ) here -->
 <!-- .. and a start of a new (form) here with Id / action /post ??? -->
       <label for="airport">Airport:</label>
@@ -48,5 +32,5 @@
 
       <button type="submit">Search Your Next Vacay</button>
     </form>
-  </body>
-</html>
+ 
+    <%- include('../partials/footer')%>
