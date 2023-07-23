@@ -11,14 +11,16 @@ module.exports = {
     
 };
 async function show (req,res){
-        const flight= await Flight.findById(req.params.id);
-        console.log(flight)
-       // Define showAllStylist variable
-        // const reviews = await Review.find({ stylist: req.params.id });
-       res.render('flights/show', { flight });
-      
-}
+    try {
+        const flights = await Flight.find().exec();
+        res.render('flights', { flights }); // Pass the flight data to the template
+      } catch (err) {
+        // Handle any errors that may occur during database retrieval
+        res.status(500).send('Error fetching flights data.');
+      }
+    };
 
+    
 async function index(req, res) {
 
     

@@ -10,19 +10,21 @@
 
 <!-- Iterate over each flight and display flight details -->
 <% flights.forEach((flight) => { %>
-    <div>
-      <p>Flight Number: <%= flight.flightNo %></p>
-      <p>Airline: <%= flight.airline %></p>
-      <p>Airport: <%= flight.airport %></p>
-      <!-- Add the "detail" link with a URL parameter for flight ID -->
-      <a href="/flights/<%= flight._id %>">View Details</a>
-    </div>
-  <% }) %>
+  <div>
+    <p>Flight Number: <%= flight.flightNo %></p>
+    <p>Airline: <%= flight.airline %></p>
+    <p>Airport: <%= flight.airport %></p>
+    <p>Departure Date: <%= flight.departs %></p>
+
+    <% flight.destination.forEach((dest) => { %>
+      <p>Destination Airport: <%= dest.airport %></p>
+      <p>Arrival Date: <%= dest.arrival.date %></p>
+    <% }) %>
 </section>
   <!-- Display the flight details -->
   <h1>Flight Details</h1> 
   <p>Flight Number: <%= flight.flightNo %></p>
-  <p>Airline: <%= flight.airline %></p>#
+  <p>Airline: <%= flight.airline %></p>
   <p>Airport: <%= flight.airport %></p>
 
   <%- include('../partials/footer')%>
