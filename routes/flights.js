@@ -12,7 +12,7 @@ router.get('/new', flightCtrl.new);
 // GET /movies/:id (show functionality) MUST be below new route
 
 //post /flight
-router.post('/', flightCtrl.create)
+router.post('/', flightCtrl.create);
  
 router.get('/:id', flightCtrl.show);
 

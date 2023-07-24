@@ -5,7 +5,7 @@ module.exports = {
 };
 
 async function create (req, res) {
-    const flight = await Flight.findById(req.paramas.id);
+    const flight = await Flight.findById(req.params.id);
     // push subdocs(destinations model) into mongoose array
     flight.destination.push(req.body);
     try {

@@ -1,31 +1,54 @@
 <%- include('../partials/header')%>
-<section id="show-page">
-    <div>Airline Name: </div>
-    <div><%= flight.airline %></div>
-    <div>Airport: </div>
-    <div><%= flight.airport %></div>
-    <div>Flight Number: </div>
-    <div><%= flight.flightNo %></div>
+<h2>Flight</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Airline</th>
+      <th>Airport</th>
+      <th>Flight Number</th>
+      <th>Depart</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= flight.airline %></td>
+      <td><%= flight.airport %></td>
+      <td><%= flight.flightNo %></td>
+      <td><%= flight.departs %></td>
+    </tr>
+  </tbody>
+  </table>
 
 
-<!-- Iterate over each flight and display flight details -->
-<% flights.forEach((flight) => { %>
-  <div>
-    <p>Flight Number: <%= flight.flightNo %></p>
-    <p>Airline: <%= flight.airline %></p>
-    <p>Airport: <%= flight.airport %></p>
-    <p>Departure Date: <%= flight.departs %></p>
+  <h2>Add a Destination</h2>
+  <form id="depart-form" action="/flights/<%= flight._id%>/destinations" method="post">
+    <label>Airport:
+        <select name="airport">
+          <option value="AMS">AMS</option>
+          <option value="YYZ">YYZ</option>
+          <option value="SEA">SEA</option>
+          <option value="MIA">MIA</option>
+        </select>
+    </label><br>
+    <label>Arrival:
+      <input type="datetime-local" name="arrival">
+    </label><br>
+    <button type="submit">Add Destination </button>
+    </form>
 
-    <% flight.destination.forEach((dest) => { %>
-      <p>Destination Airport: <%= dest.airport %></p>
-      <p>Arrival Date: <%= dest.arrival.date %></p>
-    <% }) %>
-</section>
-  <!-- Display the flight details -->
-  <h1>Flight Details</h1> 
-  <p>Flight Number: <%= flight.flightNo %></p>
-  <p>Airline: <%= flight.airline %></p>
-  <p>Airport: <%= flight.airport %></p>
+    <div>
+      <% if (flight.destination.length) { %>
+        <% flight.destination.forEach((destination) => { %>
+            <div>
+              <%= destination.airport %>
+            </div>
+            <div>
+              <%= destination.arrival %>
+            </div>
+        <% }); %>
+      <% } %>
 
-  <%- include('../partials/footer')%>
-  
+   </div>
+   <%- include('../partials/footer')%>
+
+   

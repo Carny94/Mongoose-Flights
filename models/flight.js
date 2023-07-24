@@ -8,9 +8,9 @@ const destinationSchema = new Schema({
     },
 
     arrival: {
-        date: {
+        
         type: Date    
-        }
+        
     },
     
 });
